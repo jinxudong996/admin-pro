@@ -1,4 +1,6 @@
 import './styles/index.scss'
+// 导入权限控制模块
+import './permission'
 
 import { createApp } from 'vue'
 import App from './App.vue'

@@ -37,5 +37,7 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
+
+    // 添加处理 .css 文件的规则
   }
 }
