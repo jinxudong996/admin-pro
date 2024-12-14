@@ -44,3 +44,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ###### 国际化
 
 ###### 换肤
+
+###### 全屏
