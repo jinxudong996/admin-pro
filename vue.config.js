@@ -39,5 +39,12 @@ module.exports = {
       .end()
 
     // 添加处理 .css 文件的规则
+  },
+  configureWebpack: {
+    resolve: {
+      fallback: {
+        path: require.resolve('path-browserify')
+      }
+    }
   }
 }
