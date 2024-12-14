@@ -13,6 +13,7 @@
       <div class="fixed-header">
         <!-- 顶部的 navbar -->
         <navbar />
+        <tags-view></tags-view>
       </div>
       <!-- 内容区 -->
       <app-main />
@@ -24,11 +25,11 @@
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import AppMain from './components/AppMain'
-import variables from '@/styles/variables.scss'
+// import variables from '@/styles/variables.scss'
+import TagsView from '@/components/TagsView'
 
 import {} from 'vue'
 
-console.log(variables)
 </script>
 <style lang="scss" scoped>
 @import '~@/styles/mixin.scss';

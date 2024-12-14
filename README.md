@@ -48,3 +48,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ###### 全屏
 
 ###### 头部搜索
+
+##### tagsview

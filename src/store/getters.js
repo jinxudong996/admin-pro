@@ -15,7 +15,8 @@ const getters = {
       ...generateColors(getItem(MAIN_COLOR))
     }
   },
-  sidebarOpened: state => state.app.sidebarOpened
+  sidebarOpened: state => state.app.sidebarOpened,
+  tagsViewList: state => state.app.tagsViewList
 }
 
 export default getters
