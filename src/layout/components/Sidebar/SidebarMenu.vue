@@ -1,6 +1,6 @@
 <template>
   <!-- 一级 menu 菜单 -->
-  <el-menu
+  <!-- <el-menu
     :collapse="!$store.getters.sidebarOpened"
     :default-active="activeMenu"
     class="menu"
@@ -9,13 +9,17 @@
     text-color="#fff"
     active-text-color="#ffd04b"
     router
-  >
-  <!-- <el-menu
+  > -->
+  <el-menu
+    :collapse="!$store.getters.sidebarOpened"
+    :default-active="activeMenu"
+    class="menu"
     :background-color="$store.getters.cssVar.menuBg"
     :text-color="$store.getters.cssVar.menuText"
     :active-text-color="$store.getters.cssVar.menuActiveText"
     :unique-opened="true"
-  > -->
+    router
+  >
     <!-- 子集 menu 菜单 -->
     <sidebar-item
       v-for="item in routes"
