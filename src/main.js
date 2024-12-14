@@ -1,6 +1,7 @@
 import './styles/index.scss'
 // 导入权限控制模块
 import './permission'
+import i18n from '@/i18n'
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -13,4 +14,4 @@ import installIcons from '@/icons'
 const app = createApp(App)
 installElementPlus(app)
 installIcons(app)
-app.use(store).use(router).mount('#app')
+app.use(store).use(router).use(i18n).mount('#app')
