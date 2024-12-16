@@ -18,6 +18,16 @@ module.exports = {
         target: 'https://api.imooc-admin.lgdsunday.club/',
         changeOrigin: true // 是否跨域
       }
+    },
+    client: {
+      overlay: {
+        runtimeErrors: error => {
+          const ignoreErrors = [
+            'ResizeObserver loop completed with undelivered notifications.'
+          ]
+          return !ignoreErrors.includes(error.message)
+        }
+      }
     }
   },
   chainWebpack(config) {

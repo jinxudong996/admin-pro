@@ -11,7 +11,11 @@ import installElementPlus from './plugins/element'
 
 import installIcons from '@/icons'
 
+import installFilter from '@/filters'
+
 const app = createApp(App)
+
+installFilter(app)
 installElementPlus(app)
 installIcons(app)
 app.use(store).use(router).use(i18n).mount('#app')
