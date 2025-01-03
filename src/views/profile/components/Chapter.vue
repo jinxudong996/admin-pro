@@ -1,36 +1,31 @@
 <template>
-  <el-collapse v-model="activeName" accordion>
-    <el-collapse-item
-      v-for="item in features"
+  <el-timeline>
+    <el-timeline-item
+      v-for="item in chapterData"
       :key="item.id"
-      :title="item.title"
-      :name="item.id"
+      :timestamp="item.timestamp"
+      placement="top"
     >
-      <div v-html="item.content"></div>
-    </el-collapse-item>
-  </el-collapse>
+      <el-card>
+        <h4>{{ item.content }}</h4>
+      </el-card>
+    </el-timeline-item>
+  </el-timeline>
 </template>
 
 <script setup>
-import { ref, defineProps } from 'vue'
-const activeName = ref(0)
-defineProps({
-  features: {
-    type: Array,
-    required: true
-  }
-})
+import { watchSwitchLang } from '@/utils/i18n'
+import { chapter } from '@/api/user'
+import { ref } from 'vue'
+const chapterData = ref([])
+
+const getChapterData = async () => {
+  chapterData.value = await chapter()
+}
+getChapterData()
+
+// 监听语言切换
+watchSwitchLang(getChapterData)
 </script>
 
-<style lang="scss" scoped>
-::v-deep .el-collapse-item__header {
-  font-weight: bold;
-}
-
-.el-collapse-item {
-  ::v-deep a {
-    color: #2d62f7;
-    margin: 0 4px;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

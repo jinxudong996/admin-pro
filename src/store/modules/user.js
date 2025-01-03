@@ -2,8 +2,9 @@ import { login, getUserInfo } from '@/api/sys'
 import md5 from 'md5'
 import { setItem, getItem, removeAllItem } from '@/utils/storage'
 import { TOKEN } from '@/constant'
-import router from '@/router'
+import router, { resetRouter } from '@/router'
 import { setTimeStamp } from '@/utils/auth'
+
 export default {
   namespaced: true,
   state: () => ({
@@ -28,17 +29,12 @@ export default {
           password: md5(password)
         })
           .then(data => {
-            console.log(data)
             this.commit('user/setToken', data.token)
-            router.push('/')
+            // 保存登录时间
             setTimeStamp()
             resolve()
           })
           .catch(err => {
-            // this.commit('user/setToken', '123123')
-            // mock
-            console.log(err)
-            router.push('/')
             reject(err)
           })
       })
@@ -49,6 +45,7 @@ export default {
       return res
     },
     logout() {
+      resetRouter()
       this.commit('user/setToken', '')
       this.commit('user/setUserInfo', {})
       removeAllItem()

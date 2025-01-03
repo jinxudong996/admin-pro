@@ -1,8 +1,14 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" :model="loginForm" :rules="loginRules" ref="loginFromRef">
+    <el-form
+      class="login-form"
+      ref="loginFromRef"
+      :model="loginForm"
+      :rules="loginRules"
+    >
       <div class="title-container">
         <h3 class="title">{{ $t('msg.login.title') }}</h3>
+        <lang-select class="lang-select" effect="light"></lang-select>
       </div>
 
       <el-form-item prop="username">
@@ -19,17 +25,13 @@
 
       <el-form-item prop="password">
         <span class="svg-container">
-          <!-- <span class="svg-container"> -->
-            <!-- <svg-icon icon="https://res.lgdsunday.club/user.svg"></svg-icon> -->
-            <!-- <svg-icon icon="password" /> -->
-          <!-- </span> -->
           <svg-icon icon="password" />
         </span>
         <el-input
           placeholder="password"
           name="password"
-          v-model="loginForm.password"
           :type="passwordType"
+          v-model="loginForm.password"
         />
         <span class="show-pwd">
           <svg-icon
@@ -46,15 +48,18 @@
         @click="handleLogin"
         >{{ $t('msg.login.loginBtn') }}</el-button
       >
+
+      <div class="tips" v-html="$t('msg.login.desc')"></div>
     </el-form>
   </div>
 </template>
 
 <script setup>
-// 导入组件之后无需注册可直接使用
+import LangSelect from '@/components/LangSelect/index.vue'
 import { ref } from 'vue'
 import { validatePassword } from './rules'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
 // 数据源
@@ -81,6 +86,7 @@ const loginRules = ref({
   ]
 })
 
+// 处理密码框文本显示状态
 const passwordType = ref('password')
 const onChangePwdType = () => {
   if (passwordType.value === 'password') {
@@ -94,6 +100,7 @@ const onChangePwdType = () => {
 const loading = ref(false)
 const loginFromRef = ref(null)
 const store = useStore()
+const router = useRouter()
 const handleLogin = () => {
   loginFromRef.value.validate(valid => {
     if (!valid) return
@@ -103,7 +110,8 @@ const handleLogin = () => {
       .dispatch('user/login', loginForm.value)
       .then(() => {
         loading.value = false
-        // TODO: 登录后操作
+        // 登录后操作
+        router.push('/')
       })
       .catch(err => {
         console.log(err)
@@ -111,7 +119,6 @@ const handleLogin = () => {
       })
   })
 }
-
 </script>
 
 <style lang="scss" scoped>
@@ -159,6 +166,19 @@ $cursor: #fff;
     }
   }
 
+  .tips {
+    font-size: 16px;
+    line-height: 28px;
+    color: #fff;
+    margin-bottom: 10px;
+
+    span {
+      &:first-of-type {
+        margin-right: 16px;
+      }
+    }
+  }
+
   .svg-container {
     padding: 6px 5px 6px 15px;
     color: $dark_gray;
@@ -175,6 +195,17 @@ $cursor: #fff;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
+    }
+
+    ::v-deep .lang-select {
+      position: absolute;
+      top: 4px;
+      right: 0;
+      background-color: white;
+      font-size: 22px;
+      padding: 4px;
+      border-radius: 4px;
+      cursor: pointer;
     }
   }
 

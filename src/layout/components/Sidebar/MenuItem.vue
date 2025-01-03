@@ -5,8 +5,8 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 import { generateTitle } from '@/utils/i18n'
+import { defineProps } from 'vue'
 defineProps({
   title: {
     type: String,
@@ -19,5 +19,4 @@ defineProps({
 })
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

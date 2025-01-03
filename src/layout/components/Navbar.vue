@@ -2,14 +2,14 @@
   <div class="navbar">
     <hamburger class="hamburger-container" />
     <breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
-    <!-- <breadcrumb class="breadcrumb-container" /> -->
+
     <div class="right-menu">
       <guide class="right-menu-item hover-effect" />
       <header-search class="right-menu-item hover-effect"></header-search>
       <screenfull class="right-menu-item hover-effect" />
-      <!-- 头像 -->
       <theme-picker class="right-menu-item hover-effect"></theme-picker>
       <lang-select class="right-menu-item hover-effect" />
+      <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <el-avatar
@@ -38,15 +38,15 @@
 </template>
 
 <script setup>
-import {} from 'vue'
-import { useStore } from 'vuex'
-import Hamburger from '@/components/Hamburger.vue'
+import Hamburger from '@/components/Hamburger'
 import Breadcrumb from '@/components/Breadcrumb'
 import LangSelect from '@/components/LangSelect'
-import ThemePicker from '@/components/ThemeSelect/index'
+import ThemePicker from '@/components/ThemePicker'
 import Screenfull from '@/components/Screenfull'
-import HeaderSearch from '@/components/HeaderSearch/index'
+import HeaderSearch from '@/components/HeaderSearch'
 import Guide from '@/components/Guide'
+import {} from 'vue'
+import { useStore } from 'vuex'
 
 const store = useStore()
 const logout = () => {
@@ -61,6 +61,7 @@ const logout = () => {
   position: relative;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+
   .hamburger-container {
     line-height: 46px;
     height: 100%;
@@ -73,11 +74,17 @@ const logout = () => {
       background: rgba(0, 0, 0, 0.1);
     }
   }
+
+  .breadcrumb-container {
+    float: left;
+  }
+
   .right-menu {
     display: flex;
     align-items: center;
     float: right;
     padding-right: 16px;
+
     ::v-deep .right-menu-item {
       display: inline-block;
       padding: 0 18px 0 0;
@@ -87,8 +94,14 @@ const logout = () => {
 
       &.hover-effect {
         cursor: pointer;
+        transition: background 0.3s;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.025);
+        }
       }
     }
+
     ::v-deep .avatar-container {
       cursor: pointer;
       .avatar-wrapper {
@@ -100,9 +113,6 @@ const logout = () => {
         }
       }
     }
-  }
-  .breadcrumb-container {
-    float: left;
   }
 }
 </style>

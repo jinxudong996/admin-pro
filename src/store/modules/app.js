@@ -1,6 +1,5 @@
 import { LANG, TAGS_VIEW } from '@/constant'
 import { getItem, setItem } from '@/utils/storage'
-
 export default {
   namespaced: true,
   state: () => ({
@@ -12,11 +11,16 @@ export default {
     triggerSidebarOpened(state) {
       state.sidebarOpened = !state.sidebarOpened
     },
+    /**
+     * 设置国际化
+     */
     setLanguage(state, lang) {
       setItem(LANG, lang)
       state.language = lang
     },
-    // 添加tag
+    /**
+     * 添加 tags
+     */
     addTagsViewList(state, tag) {
       const isFind = state.tagsViewList.find(item => {
         return item.path === tag.path
@@ -28,8 +32,8 @@ export default {
       }
     },
     /**
-    * 为指定的 tag 修改 title
-    */
+     * 为指定的 tag 修改 title
+     */
     changeTagsView(state, { index, tag }) {
       state.tagsViewList[index] = tag
       setItem(TAGS_VIEW, state.tagsViewList)

@@ -1,26 +1,14 @@
 <template>
   <!-- 一级 menu 菜单 -->
-  <!-- <el-menu
-    :collapse="!$store.getters.sidebarOpened"
-    :default-active="activeMenu"
-    class="menu"
-    :uniqueOpened="true"
-    background-color="#545c64"
-    text-color="#fff"
-    active-text-color="#ffd04b"
-    router
-  > -->
   <el-menu
-    :collapse="!$store.getters.sidebarOpened"
     :default-active="activeMenu"
-    class="menu"
+    :collapse="!$store.getters.sidebarOpened"
     :background-color="$store.getters.cssVar.menuBg"
     :text-color="$store.getters.cssVar.menuText"
     :active-text-color="$store.getters.cssVar.menuActiveText"
     :unique-opened="true"
     router
   >
-    <!-- 子集 menu 菜单 -->
     <sidebar-item
       v-for="item in routes"
       :key="item.path"
@@ -31,12 +19,15 @@
 
 <script setup>
 import { computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
 import SidebarItem from './SidebarItem'
+import { useRouter, useRoute } from 'vue-router'
 import { filterRouters, generateMenus } from '@/utils/route'
 
+// 计算路由表结构
 const router = useRouter()
 const routes = computed(() => {
+  console.log(111111)
+  console.log(router.getRoutes())
   const filterRoutes = filterRouters(router.getRoutes())
   return generateMenus(filterRoutes)
 })
@@ -44,14 +35,12 @@ const routes = computed(() => {
 // 计算高亮 menu 的方法
 const route = useRoute()
 const activeMenu = computed(() => {
-  const { path } = route
+  const { meta, path } = route
+  if (meta.activeMenu) {
+    return meta.activeMenu
+  }
   return path
 })
 </script>
 
-<!-- <style lang="scss" scoped>
-@import '~@/styles/variables.scss';
-.menu{
-  background-color: $menuBg;
-}
-</style> -->
+<style lang="scss" scoped></style>

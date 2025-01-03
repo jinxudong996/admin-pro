@@ -57,6 +57,7 @@ watch(
     immediate: true
   }
 )
+
 /**
  * 国际化 tags
  */
@@ -79,7 +80,7 @@ watchSwitchLang(() => {
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding: 95px 20px 20px 20px;
+  padding: 104px 20px 20px 20px;
   box-sizing: border-box;
 }
 </style>

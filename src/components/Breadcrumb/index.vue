@@ -19,10 +19,10 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
-import { useStore } from 'vuex'
-import { useRoute, useRouter } from 'vue-router'
 import { generateTitle } from '@/utils/i18n'
+import { ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
 const route = useRoute()
 // 生成数组数据
@@ -64,7 +64,7 @@ const linkHoverColor = ref(store.getters.cssVar.menuBg)
   line-height: 50px;
   margin-left: 8px;
 
-  ::v-deep .no-redirect {
+  .no-redirect {
     color: #97a8be;
     cursor: text;
   }
