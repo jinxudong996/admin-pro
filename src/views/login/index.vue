@@ -6,10 +6,10 @@
       :model="loginForm"
       :rules="loginRules"
     >
-      <div class="title-container">
+      <!-- <div class="title-container">
         <h3 class="title">{{ $t('msg.login.title') }}</h3>
         <lang-select class="lang-select" effect="light"></lang-select>
-      </div>
+      </div> -->
 
       <el-form-item prop="username">
         <span class="svg-container">
@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import LangSelect from '@/components/LangSelect/index.vue'
+// import LangSelect from '@/components/LangSelect/index.vue'
 import { ref } from 'vue'
 import { validatePassword } from './rules'
 import { useStore } from 'vuex'

@@ -37,7 +37,7 @@ const activeName = ref('feature')
 
 const featureData = ref([])
 const getFeatureData = async () => {
-  featureData.value = await feature()
+  // featureData.value = await feature()
 }
 getFeatureData()
 // 监听语言切换

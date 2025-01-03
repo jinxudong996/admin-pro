@@ -31,7 +31,7 @@
     </div>
 
     <!-- 简介 -->
-    <div class="project-bio">
+    <!-- <div class="project-bio">
       <div class="project-bio-section">
         <div class="project-bio-section-header">
           <svg-icon icon="introduce" />
@@ -57,7 +57,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </el-card>
 </template>
 

@@ -1,13 +1,13 @@
 <template>
   <div class="">
     <div class="logo-container">
-      <el-avatar
+      <!-- <el-avatar
         :size="logoHeight"
         shape="square"
         src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
-      />
+      /> -->
       <h1 class="logo-title" v-if="$store.getters.sidebarOpened">
-        imooc-admin
+        amin-pro
       </h1>
     </div>
     <el-scrollbar>
@@ -31,7 +31,7 @@ const logoHeight = 44
   align-items: center;
   justify-content: center;
   .logo-title {
-    margin-left: 10px;
+    // margin-left: 10px;
     color: #fff;
     font-weight: 600;
     line-height: 50px;

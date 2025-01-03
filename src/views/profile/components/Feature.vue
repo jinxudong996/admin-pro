@@ -1,13 +1,13 @@
 <template>
   <el-collapse v-model="activeName" accordion>
-    <el-collapse-item
+    <!-- <el-collapse-item
       v-for="item in features"
       :key="item.id"
       :title="item.title"
       :name="item.id"
     >
       <div v-html="item.content"></div>
-    </el-collapse-item>
+    </el-collapse-item> -->
   </el-collapse>
 </template>
 

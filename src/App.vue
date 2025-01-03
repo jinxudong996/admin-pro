@@ -25,7 +25,6 @@ watchSwitchLang(() => {
   }
 })
 
-document.body.removeChild(document.getElementById('m-toast'))
 </script>
 
 <style lang="scss"></style>

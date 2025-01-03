@@ -1,6 +1,6 @@
 <template>
   <el-timeline>
-    <el-timeline-item
+    <!-- <el-timeline-item
       v-for="item in chapterData"
       :key="item.id"
       :timestamp="item.timestamp"
@@ -9,7 +9,7 @@
       <el-card>
         <h4>{{ item.content }}</h4>
       </el-card>
-    </el-timeline-item>
+    </el-timeline-item> -->
   </el-timeline>
 </template>
 
