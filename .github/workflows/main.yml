@@ -1,0 +1,43 @@
+name: Deploy Vue Admin Pro
+
+on:
+  push:
+    branches:
+      - main # 当推送到 main 分支时触发
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # 使用 Node.js 16
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to server
+        uses: appleboy/scp-action@master
+        with:
+          host: 118.31.222.50 # 只使用 IP 地址
+          username: root # 或者使用非 root 用户
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: 'dist/' # 构建输出目录
+          target: '/var/www/vue-admin-pro/' # 服务器目标路径
+
+      - name: Restart Nginx
+        uses: appleboy/ssh-action@master
+        with:
+          host: 118.31.222.50 # 只使用 IP 地址
+          username: root # 或者使用非 root 用户
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            sudo systemctl restart nginx
