@@ -46,7 +46,7 @@
         style="width: 100%; margin-bottom: 30px"
         :loading="loading"
         @click="handleLogin"
-        >{{ $t('msg.login.loginBtn') }}123</el-button
+        >{{ $t('msg.login.loginBtn') }}123312</el-button
       >
 
       <div class="tips" v-html="$t('msg.login.desc')"></div>
